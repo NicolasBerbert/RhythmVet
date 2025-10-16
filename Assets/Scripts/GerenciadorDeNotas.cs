@@ -1,41 +1,51 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GerenciadorDeNotas : MonoBehaviour
 {
-    public float posicaoAcerto = -3f; // Posição Y da HitLine
-    public float margemPerfeito = 0.2f; // Distância para acerto perfeito
-    public float margemBom = 0.5f; // Distância para acerto bom
+    public float posicaoAcerto = -3f;
+    public float margemPerfeito = 0.2f;
+    public float margemBom = 0.5f;
+    
+    public Text feedbackTexto;
+    private float tempoFeedback = 0f;
     
     void Update()
     {
-        // Detecta as setas do teclado
+        if (tempoFeedback > 0)
+        {
+            tempoFeedback -= Time.deltaTime;
+            if (tempoFeedback <= 0)
+            {
+                feedbackTexto.text = "";
+            }
+        }
+        
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            VerificarAcerto("NotaA"); // Seta Esquerda
+            VerificarAcerto("NotaA");
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            VerificarAcerto("NotaS"); // Seta Baixo
+            VerificarAcerto("NotaS");
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            VerificarAcerto("NotaJ"); // Seta Cima
+            VerificarAcerto("NotaJ");
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            VerificarAcerto("NotaK"); // Seta Direita
+            VerificarAcerto("NotaK");
         }
     }
     
     void VerificarAcerto(string tagNota)
     {
-        // Procura todas as notas com essa tag
         GameObject[] notas = GameObject.FindGameObjectsWithTag(tagNota);
         
         float melhorDistancia = float.MaxValue;
         GameObject notaMaisProxima = null;
         
-        // Encontra a nota mais próxima da linha
         foreach (GameObject nota in notas)
         {
             float distancia = Mathf.Abs(nota.transform.position.y - posicaoAcerto);
@@ -47,23 +57,31 @@ public class GerenciadorDeNotas : MonoBehaviour
             }
         }
         
-        // Verifica se acertou
         if (notaMaisProxima != null && melhorDistancia <= margemBom)
         {
             if (melhorDistancia <= margemPerfeito)
             {
-                Debug.Log("PERFEITO! ⭐");
+                MostrarFeedback("PERFEITO!", Color.yellow);
             }
             else
             {
-                Debug.Log("BOM! ✓");
+                MostrarFeedback("BOM!", Color.green);
             }
             
             Destroy(notaMaisProxima);
         }
         else
         {
-            Debug.Log("ERROU! ✗");
+            MostrarFeedback("ERROU!", Color.red);
         }
+    }
+    
+    void MostrarFeedback(string mensagem, Color cor)
+    {
+        feedbackTexto.text = mensagem;
+        feedbackTexto.color = cor;
+        tempoFeedback = 0.5f;
+        
+        Debug.Log(mensagem);
     }
 }
