@@ -6,15 +6,17 @@ public class SpawnerDeNotas : MonoBehaviour
     public float alturaSpawn = 6f;
     public float intervaloEntreNotas = 1f;
     
-    private float[] posicoesX = new float[] { -2f, -0.7f, 0.7f, 2f };
-    private string[] tags = new string[] { "NotaA", "NotaS", "NotaJ", "NotaK" };
+    // MUDADO PARA 5 POSIÇÕES
+    private float[] posicoesX = new float[] { -3f, -1.5f, 0f, 1.5f, 3f };
+    private string[] tags = new string[] { "NotaA", "NotaS", "NotaJ", "NotaK", "NotaL" };
     private Color[] cores;
     
     private float tempoProximaNota = 0f;
     
     void Start()
     {
-        cores = new Color[] { Color.red, Color.blue, Color.green, Color.yellow };
+        // 5 CORES DIFERENTES
+        cores = new Color[] { Color.red, Color.blue, Color.green, Color.yellow, Color.magenta };
         tempoProximaNota = intervaloEntreNotas;
     }
     
@@ -31,7 +33,8 @@ public class SpawnerDeNotas : MonoBehaviour
     
     void SpawnarNota()
     {
-        int indiceAleatorio = Random.Range(0, 4);
+        // MUDADO PARA 5 NOTAS
+        int indiceAleatorio = Random.Range(0, 5);
         
         Vector3 posicao = new Vector3(posicoesX[indiceAleatorio], alturaSpawn, 0);
         

@@ -3,16 +3,34 @@ using UnityEngine;
 public class NotaMovimento : MonoBehaviour
 {
     public float velocidade = 3f;
+    private bool foiAcertada = false;
     
     void Update()
     {
-        // Move a nota para baixo
         transform.position += Vector3.down * velocidade * Time.deltaTime;
         
-        // Destroi a nota se passar muito da linha
-        if (transform.position.y < -5f)
+        // Se passou da linha e não foi acertada
+        if (transform.position.y < -4f && !foiAcertada)
         {
-            Destroy(gameObject);
+            NotaPerdida();
         }
+    }
+    
+    void NotaPerdida()
+    {
+        // Busca o sistema de jogo
+        SistemaDeJogo sistema = FindObjectOfType<SistemaDeJogo>();
+        
+        if (sistema != null)
+        {
+            sistema.NotaPerdida();
+        }
+        
+        Destroy(gameObject);
+    }
+    
+    public void MarcarComoAcertada()
+    {
+        foiAcertada = true;
     }
 }

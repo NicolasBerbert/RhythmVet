@@ -10,6 +10,13 @@ public class GerenciadorDeNotas : MonoBehaviour
     public Text feedbackTexto;
     private float tempoFeedback = 0f;
     
+    private SistemaDeJogo sistemaDeJogo;
+    
+    void Start()
+    {
+        sistemaDeJogo = GetComponent<SistemaDeJogo>();
+    }
+    
     void Update()
     {
         if (tempoFeedback > 0)
@@ -21,21 +28,25 @@ public class GerenciadorDeNotas : MonoBehaviour
             }
         }
         
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             VerificarAcerto("NotaA");
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.S))
         {
             VerificarAcerto("NotaS");
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.J))
         {
             VerificarAcerto("NotaJ");
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.K))
         {
             VerificarAcerto("NotaK");
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            VerificarAcerto("NotaL");
         }
     }
     
@@ -59,13 +70,28 @@ public class GerenciadorDeNotas : MonoBehaviour
         
         if (notaMaisProxima != null && melhorDistancia <= margemBom)
         {
+            NotaMovimento notaMov = notaMaisProxima.GetComponent<NotaMovimento>();
+            
             if (melhorDistancia <= margemPerfeito)
             {
                 MostrarFeedback("PERFEITO!", Color.yellow);
+                if (sistemaDeJogo != null)
+                {
+                    sistemaDeJogo.AcertoPerfeito();
+                }
             }
             else
             {
                 MostrarFeedback("BOM!", Color.green);
+                if (sistemaDeJogo != null)
+                {
+                    sistemaDeJogo.AcertoBom();
+                }
+            }
+            
+            if (notaMov != null)
+            {
+                notaMov.MarcarComoAcertada();
             }
             
             Destroy(notaMaisProxima);
@@ -73,6 +99,10 @@ public class GerenciadorDeNotas : MonoBehaviour
         else
         {
             MostrarFeedback("ERROU!", Color.red);
+            if (sistemaDeJogo != null)
+            {
+                sistemaDeJogo.Errou();
+            }
         }
     }
     
