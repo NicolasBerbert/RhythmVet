@@ -10,16 +10,37 @@ public class SistemaDeJogo : MonoBehaviour
     public int combo = 0;
     public int comboMaximo = 0;
     
+    public float duracaoFase = 60f;
+    private float tempoRestante;
+    public Text textoTimer;
+
+
+    public int acertosPerfeitos = 0;
+    public int acertosBons = 0;
+    public int erros = 0;
+    public int notasPerdidas = 0;
+
     public Text textoVida;
     public Text textoPontos;
     public Text textoCombo;
     
     public Slider barraVida;
     
+    // NOVO - Painel de Game Over
+    public GameObject painelGameOver;
+    public Text textoPontuacaoFinal;
+    public Text textoComboMaximoFinal;
+    
     void Start()
     {
         vidaAtual = vidaMaxima;
         AtualizarUI();
+        
+        // Garante que o painel está desativado no início
+        if (painelGameOver != null)
+        {
+            painelGameOver.SetActive(false);
+        }
     }
     
     public void AcertoPerfeito()
@@ -107,6 +128,32 @@ public class SistemaDeJogo : MonoBehaviour
     void GameOver()
     {
         Debug.Log("GAME OVER! Pontuacao final: " + pontos);
+        
+        // Ativa o painel de Game Over
+        if (painelGameOver != null)
+        {
+            painelGameOver.SetActive(true);
+        }
+        
+        // Atualiza os textos finais
+        if (textoPontuacaoFinal != null)
+        {
+            textoPontuacaoFinal.text = "Pontuação: " + pontos;
+        }
+        
+        if (textoComboMaximoFinal != null)
+        {
+            textoComboMaximoFinal.text = "Combo Máximo: x" + comboMaximo;
+        }
+        
+        // Para o jogo
         Time.timeScale = 0;
+    }
+    
+    // NOVO - Função para reiniciar
+    public void ReiniciarJogo()
+    {
+        Time.timeScale = 1;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay");
     }
 }
