@@ -35,12 +35,21 @@ public class ChartLoader : MonoBehaviour
     private Color[] cores = new Color[] { Color.red, Color.blue, Color.green, Color.yellow, Color.magenta };
     
     void Start()
+{
+    CalcularTempoDeQueda();
+    
+    // MODIFICADO: Carrega a fase selecionada
+    GerenciadorDeFases gerenciador = FindObjectOfType<GerenciadorDeFases>();
+    
+    string faseParaCarregar = "Fase1"; // Padrão
+    
+    if (gerenciador != null)
     {
-        // Calcula o tempo de queda baseado na velocidade e distância
-        CalcularTempoDeQueda();
-        
-        CarregarChart("Fase1");
+        faseParaCarregar = gerenciador.faseAtual;
     }
+    
+    CarregarChart(faseParaCarregar);
+}
     
     void CalcularTempoDeQueda()
     {

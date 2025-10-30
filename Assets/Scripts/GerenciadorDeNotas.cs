@@ -13,10 +13,7 @@ public class GerenciadorDeNotas : MonoBehaviour
     
     private SistemaDeJogo sistemaDeJogo;
     
-    // NOVO - Sistema de feedback acumulado
-    private List<string> feedbacksAcumulados = new List<string>();
-    private float tempoUltimoInput = 0f;
-    private float janelaCombinacao = 0.05f; // 50ms para considerar inputs "simultâneos"
+    private List<string> inputsDoFrame = new List<string>();
     
     void Start()
     {
@@ -25,13 +22,37 @@ public class GerenciadorDeNotas : MonoBehaviour
     
     void Update()
     {
-        // Limpa feedbacks acumulados se passou tempo suficiente
-        if (Time.time - tempoUltimoInput > janelaCombinacao && feedbacksAcumulados.Count > 0)
+        // Coleta TODOS os inputs do frame
+        inputsDoFrame.Clear();
+        
+        if (Input.GetKeyDown(KeyCode.A))
         {
-            MostrarFeedbackCombinado();
-            feedbacksAcumulados.Clear();
+            inputsDoFrame.Add("NotaA");
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            inputsDoFrame.Add("NotaS");
+        }
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            inputsDoFrame.Add("NotaJ");
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            inputsDoFrame.Add("NotaK");
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            inputsDoFrame.Add("NotaL");
         }
         
+        // Processa TODOS os inputs de uma vez
+        if (inputsDoFrame.Count > 0)
+        {
+            ProcessarInputs();
+        }
+        
+        // Atualiza o feedback
         if (tempoFeedback > 0)
         {
             tempoFeedback -= Time.deltaTime;
@@ -40,133 +61,133 @@ public class GerenciadorDeNotas : MonoBehaviour
                 feedbackTexto.text = "";
             }
         }
-        
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            VerificarAcerto("NotaA");
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            VerificarAcerto("NotaS");
-        }
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            VerificarAcerto("NotaJ");
-        }
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            VerificarAcerto("NotaK");
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            VerificarAcerto("NotaL");
-        }
     }
     
-    void VerificarAcerto(string tagNota)
+    void ProcessarInputs()
     {
-        tempoUltimoInput = Time.time;
+        List<string> resultados = new List<string>();
+        List<GameObject> notasParaDestruir = new List<GameObject>();
         
-        GameObject[] notas = GameObject.FindGameObjectsWithTag(tagNota);
-        
-        if (notas.Length == 0)
+        // Para cada input, encontra a melhor nota correspondente
+        foreach (string tagNota in inputsDoFrame)
         {
-            feedbacksAcumulados.Add("ERROU");
-            if (sistemaDeJogo != null)
-            {
-                sistemaDeJogo.Errou();
-            }
-            return;
-        }
-        
-        float melhorDistancia = float.MaxValue;
-        GameObject notaMaisProxima = null;
-        
-        foreach (GameObject nota in notas)
-        {
-            float distancia = Mathf.Abs(nota.transform.position.y - posicaoAcerto);
+            GameObject[] notas = GameObject.FindGameObjectsWithTag(tagNota);
             
-            if (distancia < melhorDistancia)
+            if (notas.Length == 0)
             {
-                melhorDistancia = distancia;
-                notaMaisProxima = nota;
-            }
-        }
-        
-        if (notaMaisProxima != null && melhorDistancia <= margemBom)
-        {
-            NotaMovimento notaMov = notaMaisProxima.GetComponent<NotaMovimento>();
-            
-            if (melhorDistancia <= margemPerfeito)
-            {
-                feedbacksAcumulados.Add("PERFEITO");
+                // Nenhuma nota dessa tecla na tela
+                resultados.Add("ERROU");
                 if (sistemaDeJogo != null)
                 {
-                    sistemaDeJogo.AcertoPerfeito();
+                    sistemaDeJogo.Errou();
                 }
+                continue;
+            }
+            
+            float melhorDistancia = float.MaxValue;
+            GameObject notaMaisProxima = null;
+            
+            // Encontra a nota mais próxima (que não está marcada para destruição)
+            foreach (GameObject nota in notas)
+            {
+                if (notasParaDestruir.Contains(nota)) continue; // Pula notas já processadas
+                
+                float distancia = Mathf.Abs(nota.transform.position.y - posicaoAcerto);
+                
+                if (distancia < melhorDistancia)
+                {
+                    melhorDistancia = distancia;
+                    notaMaisProxima = nota;
+                }
+            }
+            
+            // Verifica se acertou
+            if (notaMaisProxima != null && melhorDistancia <= margemBom)
+            {
+                NotaMovimento notaMov = notaMaisProxima.GetComponent<NotaMovimento>();
+                
+                if (melhorDistancia <= margemPerfeito)
+                {
+                    resultados.Add("PERFEITO");
+                    if (sistemaDeJogo != null)
+                    {
+                        sistemaDeJogo.AcertoPerfeito();
+                    }
+                }
+                else
+                {
+                    resultados.Add("BOM");
+                    if (sistemaDeJogo != null)
+                    {
+                        sistemaDeJogo.AcertoBom();
+                    }
+                }
+                
+                if (notaMov != null)
+                {
+                    notaMov.MarcarComoAcertada();
+                }
+                
+                // Marca para destruir depois
+                notasParaDestruir.Add(notaMaisProxima);
             }
             else
             {
-                feedbacksAcumulados.Add("BOM");
+                resultados.Add("ERROU");
                 if (sistemaDeJogo != null)
                 {
-                    sistemaDeJogo.AcertoBom();
+                    sistemaDeJogo.Errou();
                 }
             }
-            
-            if (notaMov != null)
-            {
-                notaMov.MarcarComoAcertada();
-            }
-            
-            Destroy(notaMaisProxima);
         }
-        else
+        
+        // Destroi todas as notas marcadas DE UMA VEZ
+        foreach (GameObject nota in notasParaDestruir)
         {
-            feedbacksAcumulados.Add("ERROU");
-            if (sistemaDeJogo != null)
-            {
-                sistemaDeJogo.Errou();
-            }
+            Destroy(nota);
         }
+        
+        // Mostra o feedback combinado
+        MostrarFeedbackCombinado(resultados);
     }
     
-    void MostrarFeedbackCombinado()
+    void MostrarFeedbackCombinado(List<string> resultados)
     {
-        if (feedbacksAcumulados.Count == 0) return;
+        if (resultados.Count == 0) return;
         
-        // Conta quantos de cada tipo
+        // Conta os tipos de resultado
         int perfeitos = 0;
         int bons = 0;
         int erros = 0;
         
-        foreach (string feedback in feedbacksAcumulados)
+        foreach (string resultado in resultados)
         {
-            if (feedback == "PERFEITO") perfeitos++;
-            else if (feedback == "BOM") bons++;
-            else if (feedback == "ERROU") erros++;
+            if (resultado == "PERFEITO") perfeitos++;
+            else if (resultado == "BOM") bons++;
+            else if (resultado == "ERROU") erros++;
         }
         
         // Monta a mensagem
         string mensagem = "";
         Color cor = Color.white;
         
-        if (feedbacksAcumulados.Count > 1)
+        if (resultados.Count > 1)
         {
-            // Múltiplos inputs simultâneos
+            // Múltiplos inputs
             if (erros == 0 && perfeitos > 0)
             {
-                mensagem = "PERFEITO x" + feedbacksAcumulados.Count + "!";
+                mensagem = "PERFEITO x" + resultados.Count + "!";
                 cor = Color.yellow;
             }
             else if (erros == 0 && bons > 0)
             {
-                mensagem = "BOM x" + feedbacksAcumulados.Count + "!";
+                mensagem = "BOM x" + resultados.Count + "!";
                 cor = Color.green;
             }
             else if (perfeitos > 0 || bons > 0)
             {
-                mensagem = string.Format("{0} ACERTOS!", (perfeitos + bons));
+                int acertos = perfeitos + bons;
+                mensagem = string.Format("{0}/{1} ACERTOS!", acertos, resultados.Count);
                 cor = Color.cyan;
             }
             else
@@ -200,10 +221,13 @@ public class GerenciadorDeNotas : MonoBehaviour
     
     void MostrarFeedback(string mensagem, Color cor)
     {
-        feedbackTexto.text = mensagem;
-        feedbackTexto.color = cor;
-        tempoFeedback = 0.5f;
+        if (feedbackTexto != null)
+        {
+            feedbackTexto.text = mensagem;
+            feedbackTexto.color = cor;
+            tempoFeedback = 0.5f;
+        }
         
-        Debug.Log(mensagem);
+        Debug.Log(mensagem + " (Total inputs: " + inputsDoFrame.Count + ")");
     }
 }
