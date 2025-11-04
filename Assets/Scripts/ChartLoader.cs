@@ -140,15 +140,12 @@ public class ChartLoader : MonoBehaviour
     }
     
     int indice = teclasParaIndices[nota.tecla];
-    Vector3 posicao = new Vector3(posicoesX[indice], alturaSpawn, 0);
+    Vector3 posicao = new Vector3(posicoesX[indice], alturaSpawn, -5f); // ← MUDOU AQUI: Z = -5
     
     GameObject notaObj = Instantiate(notaPrefab, posicao, Quaternion.identity);
     
     notaObj.tag = teclasParaTags[nota.tecla];
     notaObj.name = teclasParaTags[nota.tecla];
-    
-    // ADICIONE ESTE DEBUG
-    Debug.Log("Nota spawnada: " + nota.tecla + " com tag " + notaObj.tag + " no tempo " + nota.tempo.ToString("F2"));
     
     SpriteRenderer sprite = notaObj.GetComponent<SpriteRenderer>();
     if (sprite != null)
