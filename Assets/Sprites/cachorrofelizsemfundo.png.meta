@@ -1,0 +1,455 @@
+fileFormatVersion: 2
+guid: 5dc49f2f7a60b1e4994c91ce937f1e5d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7570950045766888340
+    second: cachorrofelizsemfundo_0
+  - first:
+      213: 1139201807621043062
+    second: cachorrofelizsemfundo_1
+  - first:
+      213: 6983615865117756498
+    second: cachorrofelizsemfundo_2
+  - first:
+      213: 4658154961207439319
+    second: cachorrofelizsemfundo_3
+  - first:
+      213: 7128031020732929389
+    second: cachorrofelizsemfundo_4
+  - first:
+      213: -2417936489640685702
+    second: cachorrofelizsemfundo_5
+  - first:
+      213: -358021408329401434
+    second: cachorrofelizsemfundo_6
+  - first:
+      213: 615095934360081126
+    second: cachorrofelizsemfundo_7
+  - first:
+      213: 4332710972977876827
+    second: cachorrofelizsemfundo_8
+  - first:
+      213: 8491825249733943020
+    second: cachorrofelizsemfundo_9
+  - first:
+      213: 6688541632212029624
+    second: cachorrofelizsemfundo_10
+  - first:
+      213: -3532853360298420516
+    second: cachorrofelizsemfundo_11
+  - first:
+      213: 7580333969297754692
+    second: cachorrofelizsemfundo_12
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: cachorrofelizsemfundo_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 0
+        width: 334
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6456d5cb059ee690800000000000000
+      internalID: -7570950045766888340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cachorrofelizsemfundo_1
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 0
+        width: 1185
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6733cbe12024fcf00800000000000000
+      internalID: 1139201807621043062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cachorrofelizsemfundo_2
+      rect:
+        serializedVersion: 2
+        x: 1137
+        y: 715
+        width: 84
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25c4028e0a9cae060800000000000000
+      internalID: 6983615865117756498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cachorrofelizsemfundo_3
+      rect:
+        serializedVersion: 2
+        x: 1197
+        y: 781
+        width: 42
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7df2e7bd14715a040800000000000000
+      internalID: 4658154961207439319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cachorrofelizsemfundo_4
+      rect:
+        serializedVersion: 2
+        x: 1221
+        y: 746
+        width: 36
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6550ca827adbe260800000000000000
+      internalID: 7128031020732929389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cachorrofelizsemfundo_5
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 471
+        width: 38
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7f038dc293c17ed0800000000000000
+      internalID: -2417936489640685702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cachorrofelizsemfundo_6
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 503
+        width: 42
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ab7a8e0d6d080bf0800000000000000
+      internalID: -358021408329401434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cachorrofelizsemfundo_7
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 433
+        width: 85
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e2d15e4e72498800800000000000000
+      internalID: 615095934360081126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cachorrofelizsemfundo_8
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 503
+        width: 42
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5f88ca9ca1e02c30800000000000000
+      internalID: 4332710972977876827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cachorrofelizsemfundo_9
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 479
+        width: 34
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cee9511b21609d570800000000000000
+      internalID: 8491825249733943020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cachorrofelizsemfundo_10
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 271
+        width: 127
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b0d8655d2972dc50800000000000000
+      internalID: 6688541632212029624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cachorrofelizsemfundo_11
+      rect:
+        serializedVersion: 2
+        x: 1213
+        y: 381
+        width: 28
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd61edf2698c8fec0800000000000000
+      internalID: -3532853360298420516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cachorrofelizsemfundo_12
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 198
+        width: 104
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44ac1de2591c23960800000000000000
+      internalID: 7580333969297754692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      cachorrofelizsemfundo_0: -7570950045766888340
+      cachorrofelizsemfundo_1: 1139201807621043062
+      cachorrofelizsemfundo_10: 6688541632212029624
+      cachorrofelizsemfundo_11: -3532853360298420516
+      cachorrofelizsemfundo_12: 7580333969297754692
+      cachorrofelizsemfundo_2: 6983615865117756498
+      cachorrofelizsemfundo_3: 4658154961207439319
+      cachorrofelizsemfundo_4: 7128031020732929389
+      cachorrofelizsemfundo_5: -2417936489640685702
+      cachorrofelizsemfundo_6: -358021408329401434
+      cachorrofelizsemfundo_7: 615095934360081126
+      cachorrofelizsemfundo_8: 4332710972977876827
+      cachorrofelizsemfundo_9: 8491825249733943020
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
