@@ -2098,7 +2098,7 @@ MonoBehaviour:
   notaPrefab: {fileID: 8935243622448225754, guid: 185d8f3f882462745a0cfd5dea557702, type: 3}
   alturaSpawn: 6
   audioSource: {fileID: 1535444412}
-  offsetTiming: -0.15
+  offsetTiming: -0.2
 --- !u!1 &1546939676
 GameObject:
   m_ObjectHideFlags: 0
